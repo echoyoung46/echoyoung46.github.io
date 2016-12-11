@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>{{ site.title }}</title>
+  <link rel="stylesheet" href="{{ site.baseurl }}/css/index.css">
 </head>
 <body>
-    <p>This is index.</p>
+  <div class="linework-container">
+    <canvas id="linework-canvas"></canvas>
+  </div>
+<!--<script src="http://localhost:35729/livereload.js"></script>-->
+<script src="/js/linework.js"></script>
+<script src="/js/index.js"></script>
+<script>
+  console.log('echoyoung');
+</script>
 </body>
 </html>
