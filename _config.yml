@@ -13,16 +13,14 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Echo's Blog
-email: your-email@domain.com
+title: Echo Young
+email: vickyyoung0406@yeah.net
 description: > # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
-baseurl: "" # the subpath of your site, e.g. /blog
+  Echo Young's Blog.
+keywords: "Echo,Young,blog,github,FED"
+baseurl: "/" # the subpath of your site, e.g. /blog
 url: "http://yangwt.com" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+github_username:  echoyoung46
 
 # Build settings
 markdown: kramdown
@@ -32,4 +30,10 @@ gems:
 exclude:
   - Gemfile
   - Gemfile.lock
-livereload: true
+
+sections:
+  - id: 'about-me'
+    i18n: 'nav.about_me'
+    name: 'About'
+    tpl: 'about.html'
+    css: ''
