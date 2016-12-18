@@ -37,3 +37,8 @@ sections:
     name: 'About'
     tpl: 'about.html'
     css: ''
+  - id: 'canvas'
+    i18n: 'nav.canvas'
+    name: 'Canvas'
+    tpl: 'canvas.html'
+    css: ''

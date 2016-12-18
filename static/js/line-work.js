@@ -41,9 +41,9 @@ Linework.prototype = {
   drawLinework: function() {
     var self = this,
         points = self.points;
-    console.log(points);
+    
     for(var i in points) {
-      self.drawCircle(points[i], 2, '');
+      self.drawCircle(points[i], 5, '');
     }
   },
   drawCircle: function(pos, rad, color) {
@@ -51,6 +51,7 @@ Linework.prototype = {
         ctx = self.ctx;
 
     ctx.beginPath();
+    console.log(pos);
     ctx.arc(pos.x, pos.y, rad, 0, 2 * Math.PI, false);
     ctx.fillStyle = 'rgba(247, 202, 24, 1)';
     ctx.fill();
