@@ -1,0 +1,32 @@
+.container {
+  background: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%; }
+  .container h1 {
+    font-size: 32px; }
+
+.outline-container {
+  position: fixed;
+  height: 100%;
+  width: 20%; }
+  .outline-container .outline-line-container {
+    height: 100%; }
+  .outline-container .outline-line {
+    display: inline-block;
+    width: 1px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    position: absolute;
+    right: 0;
+    top: 0; }
+  .outline-container .outline-ends {
+    content: '+';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    font-size: 10px;
+    position: absolute;
+    top: 10%;
+    color: rgba(255, 255, 255, 0.2); }
+
+/*# sourceMappingURL=home.css.map */

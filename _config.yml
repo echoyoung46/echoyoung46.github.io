@@ -32,13 +32,9 @@ exclude:
   - Gemfile.lock
 
 sections:
-  - id: 'about-me'
-    i18n: 'nav.about_me'
-    name: 'About'
-    tpl: 'about.html'
-    css: ''
-  - id: 'canvas'
-    i18n: 'nav.canvas'
-    name: 'Canvas'
-    tpl: 'canvas.html'
-    css: ''
+  - id: 'home'
+    i18n: 'nav.home'
+    name: 'Home'
+    tpl: 'home.html'
+    css: 'home'
+
