@@ -1,22 +1,32 @@
-.container{
+.container {
   background: rgba(0,0,0,.8);
   width: 100%;
   height: 100%;
 
-  h1{
+  h1 {
     font-size: 32px;
   }
 }
 
-.outline-container{
+#home-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.outline-container {
   position: fixed;
   height: 100%;
   width: 20%;
+  transition: background .3s linear, transform .2s ease-in;
+  transform: translate3d(-50%, 0, 0);
 
-  .outline-line-container{
+  .outline-line-container {
     height: 100%;
   }
-  .outline-line{
+  .outline-line {
     display: inline-block;
     width: 1px;
     height: 100%;
@@ -24,15 +34,114 @@
     position: absolute;
     right: 0;
     top: 0;
+    overflow: visible;
   }
-  .outline-ends{
-    content: '+';
+  .outline-ends {
     display: inline-block;
     width: 10px;
     height: 10px;
-    font-size: 10px;
+    font-size: 12px;
     position: absolute;
-    top: 10%;
-    color: rgba(255,255,255,.2);
+    left: -4px;
+    color: rgba(255,255,255,.8);
+    z-index: 1;
+  }
+  .outline-start {
+    top: 12%;
+  }
+  .outline-point {
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    border-radius: 100%;
+    background: rgba(255,255,255,.8);
+    position: absolute;
+    left: -1px;
+
+    &:nth-child(2) {
+      top: 32%;
+    }
+    &:nth-child(3) {
+      top: 52%;
+    }
+    &:nth-child(4) {
+      top: 72%;
+    }
+    &:nth-child(5) {
+      top: 92%;
+    }
+  }
+  .outline-stop {
+    bottom: 8%;
+  }
+
+  .outline-button-container {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    position: relative;
+    top: 11.5%;
+    right: -30px;
+    border: 1px solid rgba(255,255,255,.2);
+  }
+  .outline-button {
+    width: 60%;
+    height: 70%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -35%;
+    margin-left: -30%;
+  }
+  .outline-button-line {
+    display: inline-block;
+    width: 100%;
+    height: 2px;
+    background: rgba(255,255,255,.8);
+    position: absolute;
+
+    &:nth-child(1) {
+      top: 18%;
+    }
+    &:nth-child(2) {
+      top: 50%;
+      margin-top: -1px;
+    }
+    &:nth-child(3) {
+      bottom: 18%;
+    }
+  }
+  .outline-button-close {
+    display: none;
+    
+    &:before,&:after {
+      content: '';
+      display: inline-block;
+      width: 100%;
+      height: 2px;
+      background: rgba(255,255,255,.8);
+      position: absolute;
+      top: 50%;
+      margin-top: -1px;
+    }
+    &:before {
+      transform: rotate(45deg);
+    }
+    &:after {
+      transform: rotate(135deg);
+    }
+  }
+
+  &.open {
+    background: #8ac832;
+    transform: none;
+
+    .outline-button-open {
+      display: none;
+    }
+    .outline-button-close {
+      display: block;
+    }
   }
 }

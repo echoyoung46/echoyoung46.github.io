@@ -1,0 +1,20 @@
+{
+  "name": "echoyoung46.github.io",
+  "version": "1.0.0",
+  "description": "Self blog.",
+  "main": "index.js",
+  "keywords": [
+    "Echo Young",
+    "Blog",
+    "Front-End"
+  ],
+  "author": "Echo Young",
+  "license": "MIT",
+  "dependencies": {
+    "html-webpack-plugin": "2.x",
+    "jquery": "3.x",
+    "webpack": "1.x",
+    "webpack-dev-server": "1.x"
+  },
+  "repository": "echoyoung46/echoyoung46.github.io"
+}

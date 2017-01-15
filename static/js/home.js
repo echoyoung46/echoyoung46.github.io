@@ -1,4 +1,19 @@
-function Linework( _canvas ) {
+var Outline = function() {
+
+};
+
+Outline.prototype = {
+  init: function() {
+    this.bind();
+  },
+  bind: function() {
+    $('.outline-button-container').on('click', function() {
+      $('.outline-container').toggleClass('open');
+    });
+  }
+}
+
+var Linework = function( _canvas ) {
   this.canvas = document.getElementById(_canvas);
   this.ctx = this.canvas.getContext('2d');
 
@@ -8,8 +23,6 @@ function Linework( _canvas ) {
   this.canvas.height = height;
   
   this.points = [];
-
-  this.init();
 }
 
 Linework.prototype = {
@@ -20,30 +33,32 @@ Linework.prototype = {
     var self = this,
         canvas = this.canvas,
         core = {x: canvas.width / 2, y: canvas.height / 2},
-        r1 = 600,
-        r2 = 400,
-        points = [];
+        r1 = core.y / 2,
+        r2 = core.y / 4;
 
-    var isInArea = function(x, y) {
-      return (x < core.x - r2 || x > core.x + r2) && (y < core.y - r2 || y > core.y + r2);
+    var isOutArea = function(x, y) {
+      return (x > core.x - r2 && x < core.x + r2 && y > core.y - r2 && y < core.y + r2) || x < core.x - r1 || x > core.x + r1 || y < core.y - r1 || y > core.y + r1;
     };
 
-    // for(var x = core.x - r1; x < core.x + r1; x = x + 20) {
-    //   for(var y = core.y - r1; y < core.y + r1; y = y + 20) {
-    //     if( isInArea(x, y) ) {
-    //       self.points.push({x: x, y: y});
-    //     }
+    for(var x = core.x - r1; x < core.x + r1; x = x + 0.5) {
+      var ang = (Math.random() - 0.5) * 4 * Math.PI,
+          pointY = Math.tan(ang) * (x - core.x) + core.y;
+          
+        if( !isOutArea(x, pointY) ) {
+          self.points.push({x: x, y: pointY});
+        }
+    }
+
+    // console.log(canvas.width + ',' + canvas.height);
+    // console.log(core);
+    // for(var x = 0; x < canvas.width; x = x + canvas.width/20) {
+    //   for(var y = 0; y < canvas.height; y = y + canvas.height/20) {
+    //     var px = x + Math.random()*canvas.width/20;
+    //     var py = y + Math.random()*canvas.height/20;
+    //     var p = {x: px, originX: px, y: py, originY: py };
+    //     self.points.push(p);
     //   }
     // }
-
-    for(var x = 0; x < canvas.width; x = x + canvas.width/20) {
-      for(var y = 0; y < canvas.height; y = y + canvas.height/20) {
-        var px = x + Math.random()*canvas.width/20;
-        var py = y + Math.random()*canvas.height/20;
-        var p = {x: px, originX: px, y: py, originY: py };
-        self.points.push(p);
-      }
-    }
 
     // for each point find the 5 closest points
     for(var i = 0; i < self.points.length; i++) {
@@ -76,9 +91,10 @@ Linework.prototype = {
     }
 
     // assign a circle to each point
-    for(var i in points) {
-        var c = new Circle(points[i], 2+Math.random()*2, 'rgba(255,255,255,0.3)');
-        points[i].circle = c;
+    for(var i in self.points) {
+        var c = new Circle(self.points[i], 2+Math.random()*2, 'rgba(255,255,255,0.3)');
+        self.points[i].circle = c;
+        console.log(self.points[i]);
     }
 
       function Circle(pos,rad,color) {
@@ -109,19 +125,42 @@ Linework.prototype = {
   drawLinework: function() {
     var self = this,
         points = self.points;
-    
-    // for(var i in points) {
-    //   self.drawCircle(points[i], 5, '');
-    // }
+    // console.log(points);
+    for(var i in points) {
+      self.drawCircle(points[i], 1, '');
+      self.drawLine(points[i]);
+    }
   },
   drawCircle: function(pos, rad, color) {
+    // console.log(pos);
     var self = this,
         ctx = self.ctx;
 
     ctx.beginPath();
-    console.log(pos);
+    // console.log(pos.x + ',' + pos.y + ',' + rad);
     ctx.arc(pos.x, pos.y, rad, 0, 2 * Math.PI, false);
-    ctx.fillStyle = 'rgba(247, 202, 24, 1)';
+    ctx.fillStyle = 'rgba(158, 158, 158, 1)';
     ctx.fill();
+  },
+  drawLine: function(p) {
+    var self = this,
+        ctx = self.ctx;
+    // if(!p.active) return;
+    for(var i in p.closest) {
+      ctx.beginPath();
+      ctx.moveTo(p.x, p.y);
+      ctx.lineTo(p.closest[i].x, p.closest[i].y);
+      ctx.strokeStyle = 'rgba(158,158,158,.5)';
+      ctx.lineWidth = .3;
+      ctx.stroke();
+    }
   }
 }
+
+$(function() {
+  var outlineMenu = new Outline();
+  outlineMenu.init();
+
+  var lineWork = new Linework('home-canvas');
+  lineWork.init();
+})
