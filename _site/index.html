@@ -18,32 +18,118 @@
 <div class="container" id="section-about">
   <canvas id="home-canvas"></canvas>
   <div class="outline-container">
-    <div class="outline-line-container">
-      <div class="outline-line">
-        <span class="outline-ends outline-start">+</span>
-        <span class="outline-point"></span>
-        <span class="outline-point"></span>
-        <span class="outline-point"></span>
-        <span class="outline-point"></span>
-        <span class="outline-ends outline-stop">+</span>
+    <div class="outline-menu-container">
+      <ul class="menu-list">
 
-        <div class="outline-button-container">
-          <div class="outline-button outline-button-open">
-            <span class="outline-button-line"></span>
-            <span class="outline-button-line"></span>
-            <span class="outline-button-line"></span>
-          </div>
-          <div class="outline-button outline-button-close"></div>
-        </div>
-      </div>
+      </ul>
+    </div>
+    <div class="outline-line">
 
     </div>
-    <div class="outline-menu-container">
-      <h1></h1>
+  </div>
+
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide opening">
+        <svg viewBox="0 0 800 600">
+          <symbol id="s-text">
+            <text text-anchor="middle" x="50%" y="40%" class="text-line">
+              Stay Hungry
+            </text>
+            <text text-anchor="middle" x="50%" y="72%" class="text-line2">
+              Stay Foolish
+            </text>
+          </symbol>
+          
+          <g class="g-ants">
+            <use xlink:href="#s-text"
+              class="text-copy"></use>     
+            <use xlink:href="#s-text"
+              class="text-copy"></use>     
+            <use xlink:href="#s-text"
+              class="text-copy"></use>     
+            <use xlink:href="#s-text"
+              class="text-copy"></use>     
+            <use xlink:href="#s-text"
+              class="text-copy"></use>     
+          </g>
+        </svg>
+      </div>
+      <div class="swiper-slide intro">
+        <div class="slide-content intro-content">
+          <!--<img src="/static/images/self.jpg" alt="" id="avatar-img">-->
+          <div class="self-avatar">
+            <!--<canvas id="avatar-canvas" width="600" height="400"></canvas>-->
+          </div>
+          <ul class="intro-list">
+            <li class="intro-item">
+              <label for="name">Name:</label>
+              <span>Echo Young</span>
+            </li>
+            <li class="intro-item">
+              <label for="location">Location:</label>
+              <span>Shenzhen</span>
+            </li>
+            <li class="intro-item">
+              <label for="work">Work:</label>
+              <span>Web Front-End</span>
+            </li>
+            <li class="intro-item">
+              <label for="work">Experience:</label>
+              <span>2-3 years</span>
+            </li>
+            <li class="intro-item">
+              <label for="hobby">Hobby:</label>
+              <span>Travel/Ukulele/Food</span>
+            </li>
+          </ul>
+        </div>  
+      </div>
+      <div class="swiper-slide">Blog Entry</div>
+      <div class="swiper-slide skill">
+        <svg id="skill-svg" viewBox="-400 -300 800 600">
+          <defs>
+            <polygon id="basic-polygon" points="0,-200 117,-162 190,-62 190,62 117, 162 0,200, -117,160 -190,62 -190,-62 -117,-162" fill="none" stroke="#fff" strokeWidth="1"></polygon>
+            <line id="basic-line" x1="0" y1="-200" x2="0" y2="200" stroke="rgba(255,255,255,.6)" strokeWidth="1"></line>
+          </defs>
+          <g id="polygon-group">
+            <use xlink:href="#basic-polygon" class="skill-polygon skill-polygon1"></use>
+            <use xlink:href="#basic-polygon" class="skill-polygon skill-polygon2"></use>
+            <use xlink:href="#basic-polygon" class="skill-polygon skill-polygon3"></use>
+            <use xlink:href="#basic-polygon" class="skill-polygon skill-polygon4"></use>
+            <use xlink:href="#basic-polygon" class="skill-polygon skill-polygon5"></use>
+          </g>
+          <g id="line-group">
+            <use xlink:href="#basic-line" class="skill-line skill-line1"></use>
+            <use xlink:href="#basic-line" class="skill-line skill-line2" style="transform: rotate(36deg)"></use>
+            <use xlink:href="#basic-line" class="skill-line skill-line3" style="transform: rotate(72deg)"></use>
+            <use xlink:href="#basic-line" class="skill-line skill-line4" style="transform: rotate(108deg)"></use>
+            <use xlink:href="#basic-line" class="skill-line skill-line5" style="transform: rotate(144deg)"></use>
+          </g>
+          <g id="text-group" fill="#fff" style="font-size: 12px;">
+            <text class="skill-text skill-text1" x="-15" y="-205">HTML</text>
+            <text class="skill-text skill-text2" x="117" y="-167">JavaScript</text>
+            <text class="skill-text skill-text3" x="195" y="-60">SVG</text>
+            <text class="skill-text skill-text4" x="195" y="64">Canvas</text>
+            <text class="skill-text skill-text5" x="117" y="172">Weex</text>
+            <text class="skill-text skill-text6" x="-15" y="210">Threejs</text>
+            <text class="skill-text skill-text7" x="-130" y="172">Vue</text>
+            <text class="skill-text skill-text8" x="-215" y="64">PHP</text>
+            <text class="skill-text skill-text9" x="-275" y="-60">Responsive Web</text>
+            <text class="skill-text skill-text10" x="-135" y="-167">CSS</text>
+          </g>
+          <!--<polygon id="skill-score" points="0,-200, 95,-128, 152,-48, 152,48 70,97 0,120 -70,97 -114,37, -152,-49 -117,-161" fill="none" stroke="#ffff00" strokeWidth="1"></polygon>-->
+          <path id="skill-score" d="M0 -200 L95 -128 L152 -48 L152 48 L70 97 L0 120 L-70 97 L-114 37 L-152 -49 L-117 -161 Z" stroke="#ffff00" strokeWidth="1" />
+        </svg>
+      </div>
+      <div class="swiper-slide">Contact Me</div>
     </div>
   </div>
 
 </div>
+
+<script src="/static/js/snap.svg-min.js"></script>
+<script src="/vendor.js"></script>
 
   </section>
 
