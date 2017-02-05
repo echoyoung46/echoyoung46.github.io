@@ -167,24 +167,22 @@
   overflow: hidden;
   z-index: 1;
   height: 100%; }
-
-.swiper-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  display: flex;
-  transition-property: transform;
-  box-sizing: content-box;
-  flex-direction: column; }
-
-.swiper-slide {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  flex-shrink: 0;
-  text-align: center;
-  color: #fff; }
+  .swiper-container .swiper-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    transition-property: transform;
+    box-sizing: content-box;
+    flex-direction: column; }
+  .swiper-container .swiper-slide {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    flex-shrink: 0;
+    text-align: center;
+    color: #fff; }
 
 .text-line {
   font-size: .8em; }
@@ -228,9 +226,54 @@ svg {
 .slide-content {
   position: relative; }
 
-.opening {
-  background: rgba(0, 0, 0, 0.85); }
-
+.intro .center-hover {
+  width: 255px;
+  height: 255px;
+  background-color: transparent;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -128px;
+  margin-left: -128px;
+  z-index: 2;
+  cursor: pointer;
+  line-height: 255px;
+  text-align: center;
+  transition: all 500ms; }
+  .intro .center-hover.open {
+    opacity: 0;
+    pointer-events: none; }
+  .intro .center-hover:hover span {
+    color: #DDD; }
+    .intro .center-hover:hover span:before {
+      background-color: #DDD; }
+    .intro .center-hover:hover span:after {
+      background-color: #DDD; }
+  .intro .center-hover span {
+    color: #666;
+    font-family: serif;
+    font-size: 18px;
+    position: relative;
+    transition: all 500ms; }
+    .intro .center-hover span:before {
+      content: '';
+      display: inline-block;
+      height: 1px;
+      width: 16px;
+      margin-right: 12px;
+      margin-bottom: 4px;
+      background-color: #666;
+      transition: all 500ms; }
+    .intro .center-hover span:after {
+      content: '';
+      display: inline-block;
+      height: 1px;
+      width: 16px;
+      margin-left: 12px;
+      margin-bottom: 4px;
+      background-color: #666;
+      transition: all 500ms; }
 .intro .intro-content {
   width: 360px;
   height: 300px;
@@ -271,72 +314,70 @@ svg {
 
 .skill {
   background: #8ac832; }
-
-#skill-svg .skill-polygon, #skill-svg .skill-line, #skill-svg .skill-text, #skill-svg #skill-score {
-  opacity: 0; }
-#skill-svg .skill-polygon {
-  transition: all 1s ease-in-out; }
-#skill-svg .skill-polygon1 {
-  transform: scale(3);
-  transition-delay: 0.4s; }
-#skill-svg .skill-polygon2 {
-  transform: scale(2.4);
-  transition-delay: 0.3s; }
-#skill-svg .skill-polygon3 {
-  transform: scale(1.8);
-  transition-delay: 0.2s; }
-#skill-svg .skill-polygon4 {
-  transform: scale(1.2);
-  transition-delay: 0.1s; }
-#skill-svg .skill-polygon5 {
-  transform: scale(0.6);
-  transition-delay: 0s; }
-#skill-svg .skill-line {
-  transition: opacity 1s ease-in-out;
-  transition-delay: 1.2s; }
-#skill-svg #skill-score {
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  fill: none;
-  transition: all 4s 2.2s linear; }
-#skill-svg .skill-text {
-  transition: opacity .8s ease; }
-#skill-svg .skill-text1 {
-  transition-delay: 1.8s; }
-#skill-svg .skill-text2 {
-  transition-delay: 2.2s; }
-#skill-svg .skill-text3 {
-  transition-delay: 2.6s; }
-#skill-svg .skill-text4 {
-  transition-delay: 3s; }
-#skill-svg .skill-text5 {
-  transition-delay: 3.4s; }
-#skill-svg .skill-text6 {
-  transition-delay: 3.8s; }
-#skill-svg .skill-text7 {
-  transition-delay: 4.2s; }
-#skill-svg .skill-text8 {
-  transition-delay: 4.6s; }
-#skill-svg .skill-text9 {
-  transition-delay: 5s; }
-#skill-svg .skill-text10 {
-  transition-delay: 5.4s; }
-
-.skill.active #skill-svg .skill-polygon, .skill.active #skill-svg .skill-line, .skill.active #skill-svg .skill-text, .skill.active #skill-svg #skill-score {
-  opacity: 1;
-  transform: none; }
-.skill.active #skill-svg .skill-polygon1 {
-  transform: scale(1); }
-.skill.active #skill-svg .skill-polygon2 {
-  transform: scale(0.8); }
-.skill.active #skill-svg .skill-polygon3 {
-  transform: scale(0.6); }
-.skill.active #skill-svg .skill-polygon4 {
-  transform: scale(0.4); }
-.skill.active #skill-svg .skill-polygon5 {
-  transform: scale(0.2); }
-.skill.active #skill-svg #skill-score {
-  stroke-dashoffset: 0;
-  fill: rgba(255, 255, 0, 0.2); }
+  .skill #skill-svg .skill-polygon, .skill #skill-svg .skill-line, .skill #skill-svg .skill-text, .skill #skill-svg #skill-score {
+    opacity: 0; }
+  .skill #skill-svg .skill-polygon {
+    transition: all 1s ease-in-out; }
+  .skill #skill-svg .skill-polygon1 {
+    transform: scale(3);
+    transition-delay: 0.4s; }
+  .skill #skill-svg .skill-polygon2 {
+    transform: scale(2.4);
+    transition-delay: 0.3s; }
+  .skill #skill-svg .skill-polygon3 {
+    transform: scale(1.8);
+    transition-delay: 0.2s; }
+  .skill #skill-svg .skill-polygon4 {
+    transform: scale(1.2);
+    transition-delay: 0.1s; }
+  .skill #skill-svg .skill-polygon5 {
+    transform: scale(0.6);
+    transition-delay: 0s; }
+  .skill #skill-svg .skill-line {
+    transition: opacity 1s ease-in-out;
+    transition-delay: 1.2s; }
+  .skill #skill-svg #skill-score {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    fill: none;
+    transition: all 4s 2.2s linear; }
+  .skill #skill-svg .skill-text {
+    transition: opacity .8s ease; }
+  .skill #skill-svg .skill-text1 {
+    transition-delay: 1.8s; }
+  .skill #skill-svg .skill-text2 {
+    transition-delay: 2.2s; }
+  .skill #skill-svg .skill-text3 {
+    transition-delay: 2.6s; }
+  .skill #skill-svg .skill-text4 {
+    transition-delay: 3s; }
+  .skill #skill-svg .skill-text5 {
+    transition-delay: 3.4s; }
+  .skill #skill-svg .skill-text6 {
+    transition-delay: 3.8s; }
+  .skill #skill-svg .skill-text7 {
+    transition-delay: 4.2s; }
+  .skill #skill-svg .skill-text8 {
+    transition-delay: 4.6s; }
+  .skill #skill-svg .skill-text9 {
+    transition-delay: 5s; }
+  .skill #skill-svg .skill-text10 {
+    transition-delay: 5.4s; }
+  .skill.active #skill-svg .skill-polygon, .skill.active #skill-svg .skill-line, .skill.active #skill-svg .skill-text, .skill.active #skill-svg #skill-score {
+    opacity: 1;
+    transform: none; }
+  .skill.active #skill-svg .skill-polygon1 {
+    transform: scale(1); }
+  .skill.active #skill-svg .skill-polygon2 {
+    transform: scale(0.8); }
+  .skill.active #skill-svg .skill-polygon3 {
+    transform: scale(0.6); }
+  .skill.active #skill-svg .skill-polygon4 {
+    transform: scale(0.4); }
+  .skill.active #skill-svg .skill-polygon5 {
+    transform: scale(0.2); }
+  .skill.active #skill-svg #skill-score {
+    stroke-dashoffset: 0;
+    fill: rgba(255, 255, 0, 0.2); }
 
 /*# sourceMappingURL=home.css.map */

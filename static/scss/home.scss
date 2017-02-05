@@ -216,31 +216,27 @@
   overflow: hidden;
   z-index: 1;
   height: 100%;
-  // color: #fff;
-}
 
-.swiper-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  display: flex;
-  transition-property: transform;
-  box-sizing: content-box;
-  flex-direction: column;
-}
+  .swiper-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    transition-property: transform;
+    box-sizing: content-box;
+    flex-direction: column;
+  }
 
-.swiper-slide {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  flex-shrink: 0;
-  text-align: center;
-  color: #fff;
-  // width: 100%;
-  // height: 100%;
-  // text-align: center;
- 
+  .swiper-slide {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    flex-shrink: 0;
+    text-align: center;
+    color: #fff;
+  }
+
 }
 
 $colors: #360745, #D61C59, #E7D84B, #EFEAC5, #1B8798;
@@ -291,11 +287,65 @@ $stroke-step: 7%;
   position: relative;
 }
 
-.opening {
-  background: rgba(0,0,0,0.85);
-}
-
 .intro {
+  .center-hover {
+    width: 255px;
+    height: 255px;
+    background-color: transparent;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -128px;
+    margin-left: -128px;
+    z-index: 2;
+    cursor: pointer;
+    line-height: 255px;
+    text-align: center;
+    transition: all 500ms;
+    
+    &.open  {
+      opacity: 0;
+      pointer-events: none;
+    }
+    
+    &:hover span {
+      color: #DDD;
+      
+      &:before { background-color: #DDD; }
+      &:after { background-color: #DDD; }
+    }
+    
+    span {
+      color: #666;
+      font-family: serif;
+      font-size: 18px;
+      position: relative;
+      transition: all 500ms;
+      
+      &:before {
+        content: '';
+        display: inline-block;
+        height: 1px;
+        width: 16px;
+        margin-right: 12px;
+        margin-bottom: 4px;
+        background-color: #666;
+        transition: all 500ms;
+      }
+      &:after {
+        content: '';
+        display: inline-block;
+        height: 1px;
+        width: 16px;
+        margin-left: 12px;
+        margin-bottom: 4px;
+        background-color: #666;
+        transition: all 500ms;
+      }
+    }
+  }
+  
   .intro-content {
     width: 360px;
     height: 300px;
@@ -352,68 +402,68 @@ $stroke-step: 7%;
 
 .skill {
   background: #8ac832;
-}
-
-$polygonShow: 1.2s;
-$lineShow: 1s;
-$pathShow: 4s;
-
-#skill-svg {
-  .skill-polygon,.skill-line,.skill-text,#skill-score {
-    opacity: 0;
-  }
   
-  .skill-polygon {
-    transition: all 1s ease-in-out;
-  }
+  $polygonShow: 1.2s;
+  $lineShow: 1s;
+  $pathShow: 4s;
 
-  @for $i from 1 through 5 {
-    .skill-polygon#{$i} {
-      transform: scale( 3 * (6 - $i) / 5 );
-      transition-delay: (5 - $i) * .1s;
-    }
-  }
-
-  .skill-line {
-    transition: opacity $lineShow ease-in-out;
-    transition-delay: $polygonShow;
-  }
-
-  #skill-score {
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 1000;
-    fill: none;
-    transition: all $pathShow $polygonShow + $lineShow linear;
-    // transition-delay: $polygonShow + $lineShow;
-  }
-  
-  .skill-text {
-    transition: opacity .8s ease;
-  }
-  @for $i from 1 through 10 {
-    .skill-text#{$i} {
-      transition-delay: $polygonShow + $lineShow + ($i - 2) * $pathShow / 10;
-    }
-  }
-}
-
-.skill.active {
   #skill-svg {
     .skill-polygon,.skill-line,.skill-text,#skill-score {
-      opacity: 1;
-      transform: none;
+      opacity: 0;
+    }
+    
+    .skill-polygon {
+      transition: all 1s ease-in-out;
     }
 
     @for $i from 1 through 5 {
       .skill-polygon#{$i} {
-        transform: scale( (6 - $i) / 5 );
+        transform: scale( 3 * (6 - $i) / 5 );
+        transition-delay: (5 - $i) * .1s;
       }
     }
 
-    #skill-score {
-      stroke-dashoffset: 0;
-      fill: rgba(255, 255, 0, 0.2);
+    .skill-line {
+      transition: opacity $lineShow ease-in-out;
+      transition-delay: $polygonShow;
     }
 
+    #skill-score {
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      fill: none;
+      transition: all $pathShow $polygonShow + $lineShow linear;
+      // transition-delay: $polygonShow + $lineShow;
+    }
+    
+    .skill-text {
+      transition: opacity .8s ease;
+    }
+    @for $i from 1 through 10 {
+      .skill-text#{$i} {
+        transition-delay: $polygonShow + $lineShow + ($i - 2) * $pathShow / 10;
+      }
+    }
+  }
+
+  &.active {
+    #skill-svg {
+      .skill-polygon,.skill-line,.skill-text,#skill-score {
+        opacity: 1;
+        transform: none;
+      }
+
+      @for $i from 1 through 5 {
+        .skill-polygon#{$i} {
+          transform: scale( (6 - $i) / 5 );
+        }
+      }
+
+      #skill-score {
+        stroke-dashoffset: 0;
+        fill: rgba(255, 255, 0, 0.2);
+      }
+
+    }
   }
 }
