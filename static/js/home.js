@@ -18,6 +18,8 @@ window.cancelFrame = (function(){
 		};
 	})();
 
+window.isMobile = $(window).width() < 760 ? true : false;
+
 var Outline = function( _obj ) {
   this.currIndex = 0;
   this.menu = _obj.menu || [];
@@ -150,7 +152,7 @@ Linework.prototype = {
   },
   startOpening: function () {
     var self = this,
-        r = 300,
+        r = window.isMobile ? 150 : 300,
         sideCount = 24,
         ang = Math.PI * 2 / sideCount,
         sideAng = (Math.PI - ang) / 2,
@@ -248,8 +250,8 @@ Linework.prototype = {
     var self = this,
         canvas = this.canvas,
         core = {x: canvas.width / 2, y: canvas.height / 2},
-        r1 = 350,
-        r2 = 200,
+        r1 = window.isMobile ? 130 : 350,
+        r2 = window.isMobile ? 70 : 200,
         rDiff = r1 - r2;
         
     var isInArea = function(x, y) {
@@ -271,7 +273,8 @@ Linework.prototype = {
             x: pointX,
             y: pointY,
             r: Math.sqrt(Math.pow(pointX,2) + Math.pow(pointY,2)),
-            rad: rad
+            rad: rad,
+            dir: 1
           });
         }
     }
@@ -531,14 +534,18 @@ Linework.prototype = {
           pointY = _obj.y,
           pointRad = _obj.rad,
           newRad = pointRad + radChange > Math.PI * 2 ? pointRad + radChange - Math.PI * 2 : pointRad + radChange,
-          pointDir = _obj.direction || 1,
+          pointDir = _obj.dir,
           pointR = _obj.r - rChange * pointDir;
-      
+      // console.log(pointDir);
       newX = pointR * Math.cos( newRad );
       newY = pointR * Math.sin( newRad );
 
+      // console.log(Math.abs(pointR));
+      // console.log(centerX);
       if( pointR < 0 && Math.abs(pointR) > centerX ) {
         pointDir = -1;
+      }else if ( pointR > 0 && pointR > centerX ){
+        pointDir = 1;
       }
 
       return {x: newX, y: newY, r: pointR, rad: newRad, dir: pointDir};
@@ -555,6 +562,7 @@ Linework.prototype = {
         self.points[i].y = pos.y;
         self.points[i].rad = pos.rad;
         self.points[i].r = pos.r;
+        self.points[i].dir = pos.dir;
       }
 
       self.initClosestPoints();
@@ -602,6 +610,8 @@ Linework.prototype = {
 };
 
 $(function() {
+  var isLineworkAnim = false;
+
   var outlineMenu = new Outline({
     menu: ['Intro','Blog','Skill','Contact','Ending'],
     start: '16%',
@@ -611,6 +621,8 @@ $(function() {
 
   var lineWork = new Linework('home-canvas');
   lineWork.init();
+
+  var delay = window.isMobile ? 1000 : 1600;
 
   setTimeout(function() {
     var indexSwiper = new Swiper('.swiper-container', {
@@ -622,15 +634,14 @@ $(function() {
         outlineMenu.moveProcessLine( _index );
         
         if ( _index == 1 ) {
-
-          lineWork.transformLinework();
+          if (!isLineworkAnim) {
+            lineWork.transformLinework();
+            isLineworkAnim = true;
+          }
 
         }else if ( _index == 2 ) {
-          // var skill = new Skill('skill-svg');
-          // skill.init();
-          $('.skill').addClass('active');
+          // $('.skill').addClass('active');
         }else if ( _index == 4 ) {
-          // $('.skill').removeClass('active');
         }
         
       }
@@ -638,7 +649,6 @@ $(function() {
     });
 
     $('.outline-container').fadeIn();
-    $('.intro-content').fadeIn();
-  }, 1600);
+  }, delay);
 
 })

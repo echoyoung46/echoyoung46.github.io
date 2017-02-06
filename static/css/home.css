@@ -3,7 +3,8 @@
   width: 100%;
   height: 100%; }
   .container h1 {
-    font-size: 32px; }
+    font-size: 2rem;
+    margin-bottom: 10px; }
 
 #home-canvas {
   position: absolute;
@@ -17,7 +18,7 @@
   height: 100%;
   width: 30%;
   transition: background .3s linear, transform .2s ease-in;
-  transform: translate3d(-66%, 0, 0);
+  transform: translate3d(-64%, 0, 0);
   z-index: 2;
   overflow: hidden;
   display: none; }
@@ -227,81 +228,63 @@ svg {
 .slide-content {
   position: relative; }
 
-.intro .center-hover {
-  width: 255px;
-  height: 255px;
-  background-color: transparent;
-  border-radius: 50%;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  margin-top: -128px;
-  margin-left: -128px;
-  z-index: 2;
-  cursor: pointer;
-  line-height: 255px;
-  text-align: center;
-  transition: all 500ms; }
-  .intro .center-hover.open {
-    opacity: 0;
-    pointer-events: none; }
-  .intro .center-hover:hover span {
-    color: #DDD; }
-    .intro .center-hover:hover span:before {
-      background-color: #DDD; }
-    .intro .center-hover:hover span:after {
-      background-color: #DDD; }
-  .intro .center-hover span {
-    color: #666;
-    font-family: serif;
-    font-size: 18px;
-    position: relative;
-    transition: all 500ms; }
-    .intro .center-hover span:before {
-      content: '';
-      display: inline-block;
-      height: 1px;
-      width: 16px;
-      margin-right: 12px;
-      margin-bottom: 4px;
-      background-color: #666;
-      transition: all 500ms; }
-    .intro .center-hover span:after {
-      content: '';
-      display: inline-block;
-      height: 1px;
-      width: 16px;
-      margin-left: 12px;
-      margin-bottom: 4px;
-      background-color: #666;
-      transition: all 500ms; }
+.blog-list .blog-item {
+  text-align: left;
+  line-height: 5rem;
+  transition: transform 1s, opacity 1s;
+  transform: translateX(50px);
+  opacity: 0;
+  white-space: nowrap; }
+  .blog-list .blog-item:nth-child(2) {
+    transition-delay: .2s; }
+  .blog-list .blog-item:nth-child(3) {
+    transition-delay: .4s; }
+  .blog-list .blog-item:nth-child(4) {
+    transition-delay: .6s; }
+.blog-list .blog-link {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1.4rem;
+  white-space: nowrap; }
+  .blog-list .blog-link:hover {
+    color: white; }
+
+.swiper-slide-active .blog-item {
+  transform: none;
+  opacity: 1; }
+
 .intro .intro-content {
-  width: 360px;
-  height: 300px;
+  width: 400px;
+  height: 520px;
   top: 50%;
   left: 50%;
-  margin-top: -150px;
-  margin-left: -180px;
-  display: none; }
+  margin-top: -260px;
+  margin-left: -200px; }
 .intro .self-avatar {
   display: inline-block;
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
   margin: 0 auto;
   background: url(/static/images/self.jpg) center no-repeat;
   background-size: cover;
-  border-radius: 50%; }
+  border-radius: 50%;
+  transition: transform 1s, opacity 1s;
+  transform: translateY(50px);
+  opacity: 0; }
 .intro .intro-list {
   background: rgba(255, 255, 255, 0.2);
-  font-size: 1em;
+  font-size: 1rem;
   border-radius: 10px;
   text-align: left;
   font-size: 1.4em;
   padding: 20px 10%;
   letter-spacing: .1em;
-  margin-top: 20px; }
+  margin-top: 50px;
+  transition: transform 1s .5s, opacity 1s .5s;
+  transform: translateY(50px);
+  opacity: 0; }
 .intro .intro-item {
-  line-height: 1.5em;
+  line-height: 2.5em;
   overflow: hidden; }
   .intro .intro-item label {
     margin-right: 6%;
@@ -313,6 +296,12 @@ svg {
     display: inline-block;
     text-align: right;
     float: right; }
+.intro.swiper-slide-active .self-avatar, .intro.swiper-slide-active .intro-list {
+  opacity: 1;
+  transform: none; }
+
+.article .article-container {
+  padding: 20% 20%; }
 
 .skill {
   background: #8ac832; }
@@ -365,24 +354,65 @@ svg {
     transition-delay: 5s; }
   .skill #skill-svg .skill-text10 {
     transition-delay: 5.4s; }
-  .skill.active #skill-svg .skill-polygon, .skill.active #skill-svg .skill-line, .skill.active #skill-svg .skill-text, .skill.active #skill-svg #skill-score {
+  .skill.swiper-slide-active #skill-svg .skill-polygon, .skill.swiper-slide-active #skill-svg .skill-line, .skill.swiper-slide-active #skill-svg .skill-text, .skill.swiper-slide-active #skill-svg #skill-score {
     opacity: 1;
     transform: none; }
-  .skill.active #skill-svg .skill-polygon1 {
+  .skill.swiper-slide-active #skill-svg .skill-polygon1 {
     transform: scale(1); }
-  .skill.active #skill-svg .skill-polygon2 {
+  .skill.swiper-slide-active #skill-svg .skill-polygon2 {
     transform: scale(0.8); }
-  .skill.active #skill-svg .skill-polygon3 {
+  .skill.swiper-slide-active #skill-svg .skill-polygon3 {
     transform: scale(0.6); }
-  .skill.active #skill-svg .skill-polygon4 {
+  .skill.swiper-slide-active #skill-svg .skill-polygon4 {
     transform: scale(0.4); }
-  .skill.active #skill-svg .skill-polygon5 {
+  .skill.swiper-slide-active #skill-svg .skill-polygon5 {
     transform: scale(0.2); }
-  .skill.active #skill-svg #skill-score {
+  .skill.swiper-slide-active #skill-svg #skill-score {
     stroke-dashoffset: 0;
     fill: rgba(255, 255, 0, 0.2); }
 
+.contact .contact-container {
+  padding: 30% 30%; }
+.contact .link-icon {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+  float: left;
+  margin-right: 20px;
+  margin-top: 10px; }
+.contact .email-icon {
+  background-image: url(../images/email.png); }
+.contact .github-icon {
+  background-image: url(../images/github.png); }
+.contact .codepen-icon {
+  background-image: url(../images/codepen.png); }
+.contact .wechat-icon {
+  background-image: url(../images/wechat.png); }
+
 .ending {
   background: #000; }
+
+@media only screen and (max-width: 760px) {
+  html, body {
+    font-size: 10px; }
+
+  .outline-container {
+    transform: translate3d(-10%, 0, 0); }
+
+  .intro .intro-content {
+    width: 60%;
+    height: 60%;
+    margin: 0;
+    transform: translate(-50%, -50%); }
+  .intro .self-avatar {
+    width: 100px;
+    height: 100px; }
+
+  .contact .contact-container {
+    padding: 42% 12%; }
+  .contact .link-icon {
+    width: 30px;
+    height: 30px; } }
 
 /*# sourceMappingURL=home.css.map */

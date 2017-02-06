@@ -8,7 +8,8 @@
 
 
 
-        <link rel="stylesheet" href="/static/css/global.css">
+        <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0">
+<link rel="stylesheet" href="/static/css/global.css">
 
 
   
@@ -31,9 +32,6 @@
   <div class="swiper-container">
     <div class="swiper-wrapper">
       <div class="swiper-slide intro">
-        <!--<div class="center-hover">
-          <span>WELCOME</span>
-        </div>-->
         <div class="slide-content intro-content">
           <div class="self-avatar">
           </div>
@@ -55,13 +53,28 @@
               <span>2-3 years</span>
             </li>
             <li class="intro-item">
-              <label for="hobby">Hobby:</label>
-              <span>Travel/Ukulele/Food</span>
+              <label for="company">Company:</label>
+              <span>Meizu</span>
             </li>
           </ul>
         </div>  
       </div>
-      <div class="swiper-slide">Blog Entry</div>
+      <div class="swiper-slide article">
+        <div class="article-container">
+          <h1>My articles</h1>
+          <ul class="blog-list article-list">
+            
+              <li class="blog-item article-item">
+                <a class="blog-link article-link" href="/2017/02/06/readme.html">Readme</a>
+              </li>
+            
+              <li class="blog-item article-item">
+                <a class="blog-link article-link" href="/jekyll/update/2016/12/15/welcome-to-jekyll.html">Welcome to Jekyll! -- echoyoung</a>
+              </li>
+            
+          </ul>
+        </div>
+      </div>
       <div class="swiper-slide skill">
         <svg id="skill-svg" viewBox="-400 -300 800 600">
           <defs>
@@ -98,7 +111,29 @@
           <path id="skill-score" d="M0 -200 L95 -128 L152 -48 L152 48 L70 97 L0 120 L-70 97 L-114 37 L-152 -49 L-117 -161 Z" stroke="#ffff00" strokeWidth="1" />
         </svg>
       </div>
-      <div class="swiper-slide">Contact Me</div>
+      <div class="swiper-slide contact">
+        <div class="contact-container">
+          <h1>Contact Links</h1>
+          <ul class="blog-list contact-list">
+            <li class="blog-item contact-item">
+              <a href="mailto:yangwt46@gmail.com" class="blog-link contact-link">
+                <span class="link-icon email-icon"></span>Email: yangwt46@gmail.com</a>
+            </li>
+            <li class="blog-item contact-item">
+              <a href="https://github.com/echoyoung46" class="blog-link contact-link" target="_blank">
+                <span class="link-icon github-icon"></span>Github: https://github.com/echoyoung46</a>
+            </li>
+            <li class="blog-item contact-item">
+              <a href="http://codepen.io/echoyoung/" class="blog-link contact-link" target="_blank">
+                <span class="link-icon codepen-icon"></span>Codepen: http://codepen.io/echoyoung/</a>
+            </li>
+            <li class="blog-item contact-item">
+              <a href="javascript:void(0);" class="blog-link contact-link">
+                <span class="link-icon wechat-icon"></span>Wechat: vickyyoung46</a>
+            </li>
+          </ul>
+        </div>
+      </div>
       <div class="swiper-slide ending">
         <svg viewBox="0 0 800 600">
           <symbol id="s-text">
