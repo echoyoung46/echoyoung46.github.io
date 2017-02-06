@@ -389,7 +389,8 @@ $stroke-step: 7%;
 
 .article {
   .article-container {
-    padding: 20% 20%;
+    width: 50%;
+    margin: 12% auto 0;
   }
 }
 
@@ -463,7 +464,8 @@ $stroke-step: 7%;
 
 .contact {
   .contact-container {
-    padding: 30% 30%;
+    width: 50%;
+    margin: 12% auto 0;
   }
   .link-icon {
     display: inline-block;
@@ -496,6 +498,11 @@ $stroke-step: 7%;
 html,body {
   font-size: 10px;
 }
+.container {
+  h1 {
+    margin-bottom: 30px;
+  }
+}
 .outline-container {
   transform: translate3d(-10%,0,0);
 }
@@ -517,9 +524,16 @@ html,body {
   }
 }
 
+.article {
+  .article-container {
+    margin-top: 30%;
+  }
+}
+
 .contact {
   .contact-container {
-    padding: 42% 12%;
+    width: 70%;
+    margin-top: 30%;
   }
   .link-icon {
     width: 30px;

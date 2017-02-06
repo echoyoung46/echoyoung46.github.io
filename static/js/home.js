@@ -64,10 +64,12 @@ Outline.prototype = {
             +  '</p>';
       }
 
-      menuStr += '<li class="menu-item">' 
-              +   data[i] 
-              +   '<em class="menu-index">0' + i + '</em>'
-              + '</li>';
+      if (i < dataLen - 1) {
+        menuStr += '<li class="menu-item">' 
+                +   data[i] 
+                +   '<em class="menu-index">0' + i + '</em>'
+                + '</li>';
+      }
     }
 
     var button = '<div class="outline-button-container" style="top: ' + start + '%">'
@@ -98,6 +100,8 @@ Outline.prototype = {
 
       self.moveProcessLine( index );
       $('.outline-container').toggleClass('open');
+      // console.log(window.indexSwiper);
+      window.indexSwiper.slideTo( index );
     });
   },
   moveProcessLine: function( _index ) {
@@ -625,7 +629,7 @@ $(function() {
   var delay = window.isMobile ? 1000 : 1600;
 
   setTimeout(function() {
-    var indexSwiper = new Swiper('.swiper-container', {
+    window.indexSwiper = new Swiper('.swiper-container', {
       direction : 'vertical',
       mousewheelControl: true,
       onSlideChangeStart: function() {
