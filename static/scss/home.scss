@@ -24,6 +24,7 @@
   transform: translate3d(-66%, 0, 0);
   z-index: 2;
   overflow: hidden;
+  display: none;
 
   .outline-menu-container {
     color: #fff;
@@ -353,6 +354,7 @@ $stroke-step: 7%;
     left: 50%;
     margin-top: -150px;
     margin-left: -180px;
+    display: none;
   }
   .self-avatar {
     display: inline-block;
@@ -466,4 +468,8 @@ $stroke-step: 7%;
 
     }
   }
+}
+
+.ending {
+  background: #000;
 }

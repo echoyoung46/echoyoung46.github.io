@@ -19,7 +19,8 @@
   transition: background .3s linear, transform .2s ease-in;
   transform: translate3d(-66%, 0, 0);
   z-index: 2;
-  overflow: hidden; }
+  overflow: hidden;
+  display: none; }
   .outline-container .outline-menu-container {
     color: #fff;
     width: 50%;
@@ -280,7 +281,8 @@ svg {
   top: 50%;
   left: 50%;
   margin-top: -150px;
-  margin-left: -180px; }
+  margin-left: -180px;
+  display: none; }
 .intro .self-avatar {
   display: inline-block;
   width: 150px;
@@ -379,5 +381,8 @@ svg {
   .skill.active #skill-svg #skill-score {
     stroke-dashoffset: 0;
     fill: rgba(255, 255, 0, 0.2); }
+
+.ending {
+  background: #000; }
 
 /*# sourceMappingURL=home.css.map */
