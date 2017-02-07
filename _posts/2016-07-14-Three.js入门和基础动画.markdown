@@ -1,0 +1,83 @@
+# Three.js入门和基础动画#
+
+用Three.js绘制3D图形的步骤包括：定义场景、相机、渲染器、光线、物体。
+
+ ### 定义场景
+
+   `var scene = new THREE.Scene();`
+
+   scene相当于一个容器，用来包容我们想渲染的物体。
+
+ ### 定义相机
+
+   `var camera = new THREE.PerspectiveCamera(fov, aspect, near, far);`
+
+*  fov表示视场，即相机位置所能看到的全部场景
+*  aspect表示渲染结果输出去的长宽比，一般为window.innerWidth / window.innerHeight
+   * near表示近面，定义的是距离相机多近的地方开始渲染场景
+   * far表示远面，定义的是从近面出发可以看到多远的距离
+
+   `camera.position.set(x, y, z); //设置相机位置`
+
+   `camera.lookAt(new THREE.Vector3(x,y,z)); //设置相机角度`
+
+ ### 定义渲染器
+
+   `var webGLRenderer = new THREE.WebGLRenderer();`
+
+   `webGLRenderer.setClearColor(new THREE.Color(0x000, 1.0));`
+
+   `webGLRenderer.setSize(window.innerWidth, window.innerHeight);`
+
+   `webGLRenderer.shadowMapEnabled = true;` ​
+
+ ### 定义光源
+
+   `var spotLight = new THREE.SpotLight(0xffffff); //设置光源颜色`
+
+   `spotLight.position.set(-20, 30, 40); //设置光源颜色`
+
+   `spotLight.intensity = 1.5 //设置光源亮度;`
+
+   光线包括：AmbientLight（环境光）、PointLight（点光源）、SpotLight（聚光灯光源）、DirectionalLight（方向光）、HemisphereLight（半球光）、AreaLight（面光源）、LensFlare（镜头眩光）。
+
+### 定义物体
+
+   Three.js提供了基本几何图形，包括二维和三维图形。
+
+   创建几何体只需要：
+
+   `new THREE.PlaneGeometry(width, height, widthSegments, heightSegments);`
+
+   二维图形包括：PlaneGeometry（平面），CircleGeometry（平面圆）、ShapeGeometry（自定义二维图形）。
+
+   三维图形包括：CubeGeometry（立方体）、SphereGeometry（球体）、CylinderGeometry（圆柱）、TotusGeometry（圆环）……
+
+   如果是外部模型，则通过
+
+   `loader.load(path, function(result){}`
+
+   加载到场景中。
+
+ ### 动画
+
+   动画包括改变位置、缩放、旋转。
+
+   `obj.position.x=stepX; obj.position.y=stepY;obj.position.z=stepZ;`
+
+   `obj.scale.set(scaleX, scaleY, scaleZ)`
+
+   `obj.rotation.x = rotationX; obj.rotation.y = rotationY; obj.rotation.z = rotationZ;`
+
+   通过requestAnimatinoFrame来安排下一次渲染：
+
+   `requestAnimatinoFrame(render);`
+
+   如果要让几何体在垂直于Y轴的平面上沿着圆环运动，用sin、cos改变位置：
+
+   `obj.position.x = r*Math.cos(t);`
+
+   `obj.position.z = r*Math.sin(t) - r;`
+
+   ​
+

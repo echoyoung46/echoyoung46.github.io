@@ -1,0 +1,177 @@
+# SVG 动画基础#
+
+# SVG 动画基础
+
+用 SVG 做了两个动画的需求，写篇博客总结下。
+
+SVG，即可缩放矢量图形（Scaleable Vector Graphics），是一种 XML 应用，可以以一种简介、可移植的形式表示图形信息。写动画之前，需要准备素材，即 SVG 文件。有了素材则可以通过 CSS3 来呈现动画了。前端可以两种方法得到 SVG 文件，一种是通过将保留有**绘制路径**的设计稿导出成 SVG 格式，然后可以通过 AI 得到 XML 代码；另一种方法则是自己编写代码绘制图形。将 SVG 代码内联到 HTML 中：
+
+```xml
+<svg viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg">
+ <title></title>
+</svg>
+```
+
+
+
+## 基本图形
+
+1. 线段
+
+   ```xml
+   <line x1="start-x" y1="start-y" x2="end-x" y2="end-y" style="stroke-width: width; stroke: color;">
+   ```
+
+   除了上述属性之外，线段还有 stroke-opacity 控制线段的透明度，stroke-dasharray 控制线的长度和空隙的长度，数字之间用逗号或空格分隔，数字个数应为偶数，如果指定的数字个数为奇数，则 SVG 会重复一次，使得总个数为偶数。与 stroke-dasharray 对应的属性是 stroke-dashoffset，表示控制线的偏移量。stroke-dasharray 和 stroke-dashoffset 两个属性配合可以呈现出描边的过程。比如绘制一条 10px 的线段：
+
+   ```
+   .line{
+     stroke-dasharray: 10;
+     stroke-dashoffset: 10;
+     transition: all 1s linear;
+   }
+   .line.active{
+     stroke-dashoffset: 0;
+   }
+   ```
+
+   当偏移量从线段总长度逐渐减为 0 时，就是绘制出一条直线的过程。
+
+   ​
+
+2. 矩形
+
+   ```xml
+   <rect x="50" y="10" width="20" height="40" />
+   <!-- 圆角矩形 -->  
+   <rect x="50" y="10" width="20" height="40" rx="10" ry="5" />
+   ```
+
+   ​
+
+3. 圆和椭圆
+
+   ```xml
+   <!-- 圆 -->
+   <circle cx="30" cy="30" r="20" style="stroke-widith: 5; stroke: black; fill: none;" />
+   <!-- 椭圆 -->
+   <ellipse cx="30" cy="80" rx="10" ry="20" style="stroke: black; fill: none;" />
+   ```
+
+   ​
+
+4. 多边形
+
+   ```xml
+   <polygon points="15,10 55,10 45,20 5,20" style="fill: red; stroke: black;">
+   ```
+
+   `<polygon>` 元素可以用来画任意封闭图形，指定一系列的 x/y 坐标对，并用逗号或者空格分隔。
+
+   如果要填充边线交叉的多边形，fill-rule 属性有 nonzero 和 evenodd 两个值来呈现不同的填充效果。
+
+   ​
+
+5. 折线
+
+   `<polyline>` 与 `<polygon>` 有相同的 points 属性，不同在于图形并不封闭。
+
+6. 线帽和线连接
+
+   当使用 `<polyline>` 与 `<polygon>` 画线段时，可以用 stroke-linecap 指定不同的值来确定线的头尾形状，取值为 butt、round、square。也可以通过 stroke-linejoin 属性指定线段在棱角处交叉的效果，可能取值为 mitter（尖的）、round（圆的）、bevel（平的）。
+
+   ​
+
+## 分组和引用对象
+
+1. <g> 
+
+   <g> 元素会将其所有子元素作为一个组合，通常组合还有一个唯一的 id 作为名称。
+
+2. <use>
+
+   图形中经常会出现重复的元素，比如一个表盘上的刻度，秒针的刻度有 60 个，如果一个个画出来需要 60 个只有角度不一样的 <line> 或者 <rect>。这时我们可以只绘制一个刻度，然后通过复制粘贴绘制整个表盘，如下：
+
+   ```
+   <!--刻度-->
+   <rect id="secondMark" x="-2" y="-250" width="2" height="10" />
+
+   <g id="secondFace1">
+   <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#secondMark" transform="rotate(06)"></use>
+   <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#secondMark" transform="rotate(12)"></use>
+   <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#secondMark" transform="rotate(18)"></use>
+   <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#secondMark" transform="rotate(24)"></use>
+   </g>
+
+   <g id="secondFace2">
+   <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#secondFace1"></use>
+   <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#secondFace1" transform="rotate(30)"></use>
+   <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#secondFace1" transform="rotate(60)"></use>
+   </g>
+
+   <g id="secondFace">
+   <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#secondFace2"></use>
+   <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#secondFace2" transform="rotate(90)"></use>
+   <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#secondFace2" transform="rotate(180)"></use>
+   <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#secondFace2" transform="rotate(270)"></use>
+   </g>
+   ```
+
+   定义了一组图形对象后，可以使用 <use> 标签再次显示它们。
+
+   ​
+
+3. <defs>
+
+   用于定义元素，但不显示它们，相当于作为”模板“供其他地方使用。
+
+4. <symbol>
+
+   <symbol> 元素提供另一种组合元素的方式，和 <g> 不同的是，<symbol> 不会显示。<symbol> 可以指定 viewBox 和 preserveAspectRatio 属性，通过给 <use> 添加 width 和 height 属性就可以让 <symbol> 适配视口大小。
+
+5. <image>
+
+   ```
+   <image xlink:href="xxx.jpg" x="" y="" width="" height="">
+   ```
+
+   如果图像文件的 尺寸与元素的宽度和高度不匹配，<image> 可以使用 preserveAspectRatio 属性指示浏览器怎么处理，默认值为 xMidYMid meet，会缩放图像并居中显示在指定的矩形中。
+
+## 坐标系统变换
+
+我们可以给对应的 SVG 元素添加 transform 属性，来进行 translate 和 scale 变换，用法同 CSS3 一样。这里需要特别说明的是，translate 移动的不是图形对象，而是网格坐标。scale 不是改变图形队形的网格坐标或者笔画宽度，而是其对应画布上的坐标系统大小。因此，变换序列的顺序会形成不同的结果。
+
+## 渐变
+
+1. linearGradient 线性渐变
+
+   ```html
+   <linearGradient id="two-hues">
+     <stop offset="0%" style="stop-color: #ffcc00" />
+     <stop offset="100%" style="stop-color: #0099cc" />
+   </linearGradient>
+   <rect x="20" y="20" width="200" height="100" style="fill: url(#two-hues); stoke: black;" />
+   ```
+
+   <stop> 元素有offset 和 stop-color 两个必要属性。offset 用于确定线上哪个点的颜色应该为 stop-color。
+
+   另外还可以使用 stop-capacity 设置颜色透明度。
+
+   ```html
+   <linearGradient x1="" y1="" x2="" y2=""></linearGradient>
+   ```
+
+   如果想要颜色沿着竖线或者有角度的线条过渡，就必须使用 x1 和 y1 以及 x2 和 y2 属性指定渐变的起点和终点。
+
+2. radialGradient 径向渐变
+
+   ```
+   <radialGradient cx="0%" cy="0%" fx="50%" fy="50%" r="100%"></radialGradient>
+   ```
+
+   cx 和 cy 指定渐变的起始位置，fx 和 fy 指定圆心位置，r 指定渐变圆心半径。
+
+## Demo 演示
+1. [手表动画](http://codepen.io/echoyoung/pen/zKYYLR)
+2. [手机描边动画](http://codepen.io/echoyoung/pen/RGwNWN)
+

@@ -1,0 +1,93 @@
+# SVG 滤镜那些事儿#
+
+虽然 SVG 不是一种位图描述语言，但它仍然允许我们使用一些相同的工具。当 SVG 阅读器程序处理一个图形对象时，它会将对象呈现在位图输出设备上；在某一时刻，阅读器程序会把对象的描述信息转换为一组对应的像素，然后呈现在输出设备上。
+
+SVG 滤镜的用法如下：
+
+```html
+<filter id="f1" x="0%" y="-500%" width="1000%" height="1000%"></filter>
+<path class="st1" style="filter:url(#f1)" stroke="url(#linear)" d="M-556,2050.5l123-52l53,8l32-14"/>
+```
+
+用 SVG 的 <filter> 元素指定一组操作（也称作基元），在对象的旁边呈现一个模糊的投影，然后把这个滤镜附加给一个对象。
+
+SVG 滤镜的用处在于可以创建投影效果。
+
+## 创建投影效果
+
+1. 投影 <feGaussianBlur>
+
+   起始和结束 <filter> 标记之间就是执行操作的滤镜基元。每个基元有一个或多个输入，但只有一个输出。一个输入可以是原始图形（被指定为 SourceGraphic）、图形的阿尔法（不透明度）通道（被指定为 SourceAlpha），或者是前一个滤镜基元的输出。
+
+   ```html
+   <filter id="">
+     <feGaussianBlur in="sourceAlpha" stdDeviation="2" />
+   </filter>>
+   ```
+
+   指定输入源用 in 属性，用 stdDeviation 属性指定模糊度，数值越大，模糊度越大。如果给 stdDeviation 提供两个有空格分隔的数字，第一个数字表示 x 方向的模糊度，第二个数字表示 y 方向的模糊度。
+
+   滤镜返回的是模糊单元，而不是原始图形。要实现原始图形加上投影的效果，需要添加更多的滤镜单元。
+
+2. 存储、链接、合并滤镜效果
+
+   ```html
+   <filter id="f1" x="0%" y="-500%" width="1000%" height="1000%">  
+     <feOffset result="offOut" in="SourceGraphic" dx="5" dy="5" />  
+     <feGaussianBlur result="blurOut" in="offOut" stdDeviation="8" />  
+     <feMerge>
+       <feMergeNode in="blur"/>
+       <feMergeNode in="SourceGraphic" />	
+     </feMerge>  
+   </filter>
+   ```
+
+   <feOffset> 通过 dx 和 dy 指定偏移量。  
+
+   result 属性指定当前基元的结果稍后可以通过什么名字引用，它只在包含该基元的 <filter> 中有效。
+
+   <feMerge> 基元包裹一个 <feMergeNode> 元素列表，每个元素都制定一个输入，这些输入按照出现的顺序一个堆叠在另一个上面。
+
+3. 发光式投影 <feColorMatrix>
+
+   ```html
+   <feColorMatrix type="matrix" values=
+   "0 0 0 0 0
+   0 0 0 0.9 0
+   0 0 0 0.9 0
+   0 0 0 1 0
+   " />
+   ```
+
+   当黑色文本也需要投影时，可以用 <feColorMatrix> 来改变颜色值。当 type 属性为 matrix，必须设置 values 为 20 个数字，按照 4 行 5 列的格式来描述变换信息。这个矩阵可以看作：
+
+   ```
+   values=
+   "0 0 0 red 0
+    0 0 0 green 0
+    0 0 0 blue 0
+    0 0 0 1 0"
+   ```
+
+   关于矩阵的原理这里就不详细说明了。
+
+4. <feImage>
+
+   <feImage> 允许我们使用任意的 JPG、PNG、SVG 文件，或者带有 id 属性的 SVG 元素作为滤镜的输入源。
+
+   ```html
+   <feImage xlink:href="xx.jpg" result="image" x="0" y="0" width="100%" height="100%" preserveAspectRatio="none" />
+   ```
+
+5. <feComposite> 和 <feBlend>
+
+   除了 <feMerge> 合并滤镜，还可以通过 <feComposite> 和 <feBlend> 两种滤镜来进行合并。
+
+   两者都需要指定 in 和 in2 属性来接受两个输入源。
+
+   <feComposite> 通过 operator 属性来指定效果，可能值有：over、in、out、atop、xor、arithmetic 来改变两种滤镜的位置关系。
+
+   <feBlend> 通过 mode 属性设置如何混合输入源，可能值有：normal、multiply、screen、darken、lighten。
+
+
+这些是目前接触到的滤镜，后续了解更多之后再做补充。
