@@ -527,7 +527,7 @@ Linework.prototype = {
   },
   transformLinework: function() {
     var self = this,
-        rChange = 5,
+        rChange = window.isMobile ? 1 : 5,
         radChange = 0.03,
         centerX = self.canvas.width / 2,
         centerY = self.canvas.height / 2,
@@ -540,12 +540,10 @@ Linework.prototype = {
           newRad = pointRad + radChange > Math.PI * 2 ? pointRad + radChange - Math.PI * 2 : pointRad + radChange,
           pointDir = _obj.dir,
           pointR = _obj.r - rChange * pointDir;
-      // console.log(pointDir);
+     
       newX = pointR * Math.cos( newRad );
       newY = pointR * Math.sin( newRad );
 
-      // console.log(Math.abs(pointR));
-      // console.log(centerX);
       if( pointR < 0 && Math.abs(pointR) > centerX ) {
         pointDir = -1;
       }else if ( pointR > 0 && pointR > centerX ){
