@@ -418,7 +418,7 @@ webpackJsonp([0],[
 	  },
 	  rotateLinework: function() {
 	    var self = this,
-	        rChange = 5,
+	        rChange = window.isMobile ? 2 : 5,
 	        radChange = 0.04,
 	        centerX = self.canvas.width / 2,
 	        centerY = self.canvas.height / 2,
@@ -531,7 +531,7 @@ webpackJsonp([0],[
 	  },
 	  transformLinework: function() {
 	    var self = this,
-	        rChange = window.isMobile ? 1 : 5,
+	        rChange = window.isMobile ? 2 : 5,
 	        radChange = 0.03,
 	        centerX = self.canvas.width / 2,
 	        centerY = self.canvas.height / 2,
