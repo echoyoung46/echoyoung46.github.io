@@ -1,5 +1,97 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000//feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000//feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000//" rel="alternate" type="text/html" /><updated>2017-02-07T11:15:21+08:00</updated><id>http://localhost:4000///</id><title type="html">Echo Young</title><subtitle>Echo Young's Blog.
-</subtitle><entry><title type="html">Svg滤镜那些事儿</title><link href="http://localhost:4000//2016/12/01/SVG%E6%BB%A4%E9%95%9C%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF.html" rel="alternate" type="text/html" title="Svg滤镜那些事儿" /><published>2016-12-01T00:00:00+08:00</published><updated>2016-12-01T00:00:00+08:00</updated><id>http://localhost:4000//2016/12/01/SVG%E6%BB%A4%E9%95%9C%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF</id><content type="html" xml:base="http://localhost:4000//2016/12/01/SVG%E6%BB%A4%E9%95%9C%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF.html">&lt;h1 id=&quot;svg-滤镜那些事儿&quot;&gt;SVG 滤镜那些事儿&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000//feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000//feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000//" rel="alternate" type="text/html" /><updated>2017-02-08T13:39:02+08:00</updated><id>http://localhost:4000///</id><title type="html">Echo Young</title><subtitle>Echo Young's Blog.
+</subtitle><entry><title type="html">Javascript 风格指南（笔记）</title><link href="http://localhost:4000//2017/02/05/JavaScript-%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97-%E7%AC%94%E8%AE%B0.html" rel="alternate" type="text/html" title="Javascript 风格指南（笔记）" /><published>2017-02-05T00:00:00+08:00</published><updated>2017-02-05T00:00:00+08:00</updated><id>http://localhost:4000//2017/02/05/JavaScript%20%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97(%E7%AC%94%E8%AE%B0)</id><content type="html" xml:base="http://localhost:4000//2017/02/05/JavaScript-%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97-%E7%AC%94%E8%AE%B0.html">&lt;h1 id=&quot;javascript-风格指南笔记&quot;&gt;JavaScript 风格指南（笔记）&lt;/h1&gt;
+
+&lt;h2 id=&quot;变量&quot;&gt;变量&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;使用有意义、可读性好的变量名&lt;/li&gt;
+  &lt;li&gt;使用 const 定义长俩个&lt;/li&gt;
+  &lt;li&gt;对功能类似的变量名采用统一的命名风格&lt;/li&gt;
+  &lt;li&gt;使用易于检索名称（特别是数字）&lt;/li&gt;
+  &lt;li&gt;传递参数时，使用说明变量&lt;/li&gt;
+  &lt;li&gt;不要绕太多的弯子，显式优于隐式&lt;/li&gt;
+  &lt;li&gt;当类/对象名已有意义时，对其变量命名不需要再次重复&lt;/li&gt;
+  &lt;li&gt;避免无意义的条件判断&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;函数&quot;&gt;函数&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;函数参数不超过 2 个&lt;/li&gt;
+  &lt;li&gt;函数功能的单一性&lt;/li&gt;
+  &lt;li&gt;函数命名明确功能&lt;/li&gt;
+  &lt;li&gt;函数只做一层抽象&lt;/li&gt;
+  &lt;li&gt;移出重复的代码&lt;/li&gt;
+  &lt;li&gt;采用默认参数精简代码&lt;/li&gt;
+  &lt;li&gt;使用 Object.assign 设置默认对象&lt;/li&gt;
+  &lt;li&gt;不要使用标记（Flag） 作为函数参数&lt;/li&gt;
+  &lt;li&gt;避免副作用，即避免「接受一个值并返回一个结果」&lt;/li&gt;
+  &lt;li&gt;不要写全局函数&lt;/li&gt;
+  &lt;li&gt;采用函数式编程&lt;/li&gt;
+  &lt;li&gt;封装判断条件&lt;/li&gt;
+  &lt;li&gt;避免「否定情况」的判断&lt;/li&gt;
+  &lt;li&gt;避免条件判断，使用多态&lt;/li&gt;
+  &lt;li&gt;避免类型判断&lt;/li&gt;
+  &lt;li&gt;避免过度优化，现代浏览器运行时会对代码自动优化&lt;/li&gt;
+  &lt;li&gt;删除无效代码&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;对象和数据结构&quot;&gt;对象和数据结构&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;使用 getters 和 setters&lt;/li&gt;
+  &lt;li&gt;让对象拥有私有成员，可以通过闭包完成&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;类&quot;&gt;类&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;单一职责原则（SRP）&lt;/li&gt;
+  &lt;li&gt;开/闭原则（OCP），易于扩展，难于修改&lt;/li&gt;
+  &lt;li&gt;利斯科夫替代原则（LSP），子类对象应该能够替换其超类对象被使用&lt;/li&gt;
+  &lt;li&gt;接口隔离原则（ISP），不依赖不需要的接口，一个类对另一个类的依赖应该建立在最小的接口上&lt;/li&gt;
+  &lt;li&gt;依赖反转原则（DIP）&lt;/li&gt;
+  &lt;li&gt;使用 ES6 的 classes 而不是 ES5 的 Function&lt;/li&gt;
+  &lt;li&gt;使用方法链&lt;/li&gt;
+  &lt;li&gt;优先使用组合模式而非继承&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;测试&quot;&gt;测试&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;单一的测试每个概念&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;并发&quot;&gt;并发&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;用 Promises 替代回调&lt;/li&gt;
+  &lt;li&gt;Async/Await 是较 Promises 更好的选择&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;错误处理&quot;&gt;错误处理&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;捕获错误&lt;/li&gt;
+  &lt;li&gt;不要忽略被拒绝的 promises&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;格式化&quot;&gt;格式化&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;大小写一致&lt;/li&gt;
+  &lt;li&gt;调用函数的函数和被调函数应放在较近的位置&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;注释&quot;&gt;注释&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;只对存在一定业务逻辑复制性的代码进行注释&lt;/li&gt;
+  &lt;li&gt;不要在代码库中遗留被注释掉的代码&lt;/li&gt;
+  &lt;li&gt;不需要版本更新类型注释&lt;/li&gt;
+  &lt;li&gt;避免位置标记&lt;/li&gt;
+  &lt;li&gt;避免在源文件中写入法律评论&lt;/li&gt;
+&lt;/ol&gt;</content><summary type="html">JavaScript 风格指南（笔记）</summary></entry><entry><title type="html">Svg滤镜那些事儿</title><link href="http://localhost:4000//2016/12/01/SVG%E6%BB%A4%E9%95%9C%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF.html" rel="alternate" type="text/html" title="Svg滤镜那些事儿" /><published>2016-12-01T00:00:00+08:00</published><updated>2016-12-01T00:00:00+08:00</updated><id>http://localhost:4000//2016/12/01/SVG%E6%BB%A4%E9%95%9C%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF</id><content type="html" xml:base="http://localhost:4000//2016/12/01/SVG%E6%BB%A4%E9%95%9C%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF.html">&lt;h1 id=&quot;svg-滤镜那些事儿&quot;&gt;SVG 滤镜那些事儿&lt;/h1&gt;
 
 &lt;p&gt;虽然 SVG 不是一种位图描述语言，但它仍然允许我们使用一些相同的工具。当 SVG 阅读器程序处理一个图形对象时，它会将对象呈现在位图输出设备上；在某一时刻，阅读器程序会把对象的描述信息转换为一组对应的像素，然后呈现在输出设备上。&lt;/p&gt;
 

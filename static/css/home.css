@@ -404,6 +404,8 @@ svg {
 
   .outline-container {
     transform: translate3d(-10%, 0, 0); }
+    .outline-container .menu-item {
+      font-size: 1.8em; }
 
   .intro .intro-content {
     width: 60%;
@@ -416,6 +418,9 @@ svg {
 
   .article .article-container {
     margin-top: 30%; }
+
+  #skill-svg {
+    transform: scale(1.4); }
 
   .contact .contact-container {
     width: 70%;

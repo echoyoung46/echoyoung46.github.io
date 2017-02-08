@@ -505,6 +505,10 @@ html,body {
 }
 .outline-container {
   transform: translate3d(-10%,0,0);
+
+  .menu-item {
+    font-size: 1.8em;
+  }
 }
 #home-canvas {
   // width: 80%;
@@ -528,6 +532,10 @@ html,body {
   .article-container {
     margin-top: 30%;
   }
+}
+
+#skill-svg {
+  transform: scale(1.4);
 }
 
 .contact {
