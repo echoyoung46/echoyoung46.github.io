@@ -6,6 +6,7 @@
   h1 {
     font-size: 2rem;
     margin-bottom: 10px;
+    text-align: left;
   }
 }
 
@@ -35,11 +36,9 @@
     right: 20%;
     display: none;
   }
-  .menu-list {
 
-  }
   .menu-item {
-    font-size: 2.4em;
+    font-size: 1.8em;
     line-height: 1.5em;
     position: relative;
     text-align: right;
@@ -266,7 +265,7 @@ $stroke-step: 7%;
   stroke-dasharray: $stroke-step $stroke-step * ($max - 1);
   stroke-width: 3px;
   
-  animation: stroke-offset 9s infinite linear;
+  animation: stroke-offset 9s 2s infinite linear;
   
   @for $item from 1 through $max {
     $stroke-color: nth($colors, $item);
@@ -279,7 +278,10 @@ $stroke-step: 7%;
   }
 
 @keyframes stroke-offset {
-  50% {
+  10% {
+    stroke-dasharray: $stroke-step $stroke-step * ($max - 1);
+  }
+  55% {
     stroke-dashoffset: $stroke-step * $max;  
     stroke-dasharray: 0 $stroke-step * $max*2.5;
   }
@@ -390,7 +392,7 @@ $stroke-step: 7%;
 .article {
   .article-container {
     width: 50%;
-    margin: 12% auto 0;
+    margin: 12% 0 0 35%;
   }
 }
 
@@ -465,7 +467,7 @@ $stroke-step: 7%;
 .contact {
   .contact-container {
     width: 50%;
-    margin: 12% auto 0;
+    margin: 12% 0 0 35%;
   }
   .link-icon {
     display: inline-block;
@@ -531,6 +533,7 @@ html,body {
 .article {
   .article-container {
     margin-top: 30%;
+    margin-left: 25%;
   }
 }
 
@@ -542,10 +545,17 @@ html,body {
   .contact-container {
     width: 70%;
     margin-top: 30%;
+    margin-left: 25%;
   }
   .link-icon {
     width: 30px;
     height: 30px;
+  }
+}
+
+.blog-list {
+  .blog-link {
+    white-space: initial;
   }
 }
 }

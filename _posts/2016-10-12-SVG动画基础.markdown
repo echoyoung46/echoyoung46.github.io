@@ -1,6 +1,9 @@
-# SVG 动画基础#
+---
+layout: post
+title: SVG 动画基础
+---
 
-# SVG 动画基础
+# SVG 动画基础#
 
 用 SVG 做了两个动画的需求，写篇博客总结下。
 

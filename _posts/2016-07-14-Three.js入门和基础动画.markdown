@@ -1,3 +1,8 @@
+---
+layout: post
+title: Three.js 入门和基础动画
+---
+
 # Three.js入门和基础动画#
 
 用Three.js绘制3D图形的步骤包括：定义场景、相机、渲染器、光线、物体。

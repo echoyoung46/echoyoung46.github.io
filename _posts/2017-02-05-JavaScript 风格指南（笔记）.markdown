@@ -1,3 +1,8 @@
+---
+layout: post
+title: JavaScript 风格指南（笔记）
+---
+
 # JavaScript 风格指南（笔记）#
 
 ## 变量##

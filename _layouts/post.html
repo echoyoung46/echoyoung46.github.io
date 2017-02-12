@@ -1,0 +1,12 @@
+---
+layout: default
+---
+<link rel="stylesheet" href="{{"static/css/markdown.css" | prepend: site.baseurl}}">
+
+<canvas id="post-canvas"></canvas>
+<div class="markdown-body">
+    {{ content }}
+</div>
+
+<script src="{{"static/js/vendor.js" | prepend: site.baseurl}}"></script>
+<script src="{{"static/js/post.entry.js" | prepend: site.baseurl}}"></script>
