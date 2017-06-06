@@ -17,7 +17,7 @@ title: Echo Young
 email: vickyyoung0406@yeah.net
 description: > # this means to ignore newlines until "baseurl:"
   Echo Young's Blog.
-keywords: "Echo,Young,blog,github,FED"
+keywords: "Echo,Young,blog,github,FED,echoyoung,echowtyang"
 baseurl: "/" # the subpath of your site, e.g. /blog
 url: "http://yangwt.com" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  echoyoung46
