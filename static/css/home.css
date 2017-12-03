@@ -6,6 +6,8 @@
     font-size: 2rem;
     margin-bottom: 10px;
     text-align: left; }
+  .container a {
+    color: #666; }
 
 #home-canvas {
   position: absolute;
